@@ -4,16 +4,16 @@ import { Col, Row, Card } from 'react-bootstrap';
 function SortProduct(props) {
     console.log("------props------", props)
     return (
-        <div>
+        <div style={{marginTop: 50}}>
             <Row>
-                <Col xs={12} md={6} >
+                <Col xs={12} md={3} >
                     <div className="sort_product">
                         <h4>
-                            EXPLORE POPULAR ASCII FACES
+                            Sort Ascii Faces
                     </h4>
                     </div>
                 </Col>
-                <Col xs={12} md={6}>
+                <Col xs={12} md={9}>
                     <div>
                         <select
                             style={{

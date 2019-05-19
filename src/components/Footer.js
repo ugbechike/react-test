@@ -5,8 +5,8 @@ export default function () {
         <footer>
             <div className="footer0">
                 <div className="footerContent">
-                    <p style={{ fontSize: 18, color: "#858788", fontWeight: "bold" }}>PAYSMOSMO</p>
-                    <p style={{ color: "#858788", marginTop: 20 }}>Help give out inventory loans to cooperative members with ease.</p>
+                    <p style={{ fontSize: 18, color: "#858788", fontWeight: "bold" }}>Ascii</p>
+                    <p style={{ color: "#858788", marginTop: 20 }}>An e-commerce demo app with ascii faces</p>
                 </div>
                 <div className="footerContent">
                     <p style={{ fontSize: 14, color: "#858788", fontWeight: "bold" }}>Contact</p>
@@ -54,7 +54,7 @@ export default function () {
                 <span style={{
                     color: "#858788",
                     fontWeight: "bold"
-                }}> 2018 &copy; PAYSMOSMO</span>
+                }}> 2019 &copy; ACSII</span>
             </div>
         </footer>
     );

@@ -8,8 +8,11 @@ export default class App extends React.Component {
         return (
             <div>
                 <Navbar />
+                <div style={{backgroundColor: "#f3f2f2"}}>
+
                 <br />
                 <Body />
+                </div>
                 <Footer />
             </div>
         );

@@ -8,9 +8,11 @@ body{
     font-family: 'AvenirNextLTPro-Regular'!important;
     /* font-size: 12px; */
 }
+
 b{
   font-size: 15px;
 }
+
 .textBold{
     font-weight: bold;
 }
@@ -20,21 +22,40 @@ b{
   flex-wrap: wrap;
 }
 
+.the_end {
+  color: green;
+  text-align: center;
+}
+
 .cover{
   width: 25%;
   padding: 15px;
 }
 
+.bg-light {
+  background-color: white !important;
+}
 .cover_face{
   text-align: center;
-  font-size: 40px;
+  height: 15vh;
+    margin-top: 9vh;
 }
 
 .container_card {
-  border: 1px solid;
     padding: 12px;
-    border-radius: 5px
+    border-radius: 5px;
+    -webkit-box-shadow: 0 10px 6px -6px #777;
+	   -moz-box-shadow: 0 10px 6px -6px #777;
+	        box-shadow: 0 10px 6px -6px #777;
+  cursor: pointer;
+  height: 40vh;
+    background: white;
+    transition: 0.3s;
 
+}
+
+.container_card:hover {
+  box-shadow: none;
 }
 
 .sidebar-menu .list-group-item.active:first-child {
@@ -129,19 +150,17 @@ b{
 
 ul li {
   list-style: none;
-  /* display:  */
 }
 
 .ad {
 flex: 1!Important;
 width: 38vw;
 position: relative;
-/* margin: auto; */
-border: 1px solid;
 right: 41vw;
 margin-top: 4vh;
 text-align: center;
 border-radius: 5px;
+background: white;
 }
 
 .starRating0 {
@@ -262,7 +281,7 @@ h3 span:nth-child(14) {
   position: relative;
   width: 64px;
   height: 64px;
-  /* background-color: green; */
+  left: 34vw;
 }
 .lds-roller div {
   animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
@@ -275,8 +294,9 @@ h3 span:nth-child(14) {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: pink;
+  background: #28a745;
   margin: -3px 0 0 -3px;
+  right: 10vw
 }
 .lds-roller div:nth-child(1) {
   animation-delay: -0.036s;

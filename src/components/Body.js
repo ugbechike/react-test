@@ -99,7 +99,7 @@ export default class Body extends React.Component {
             product.map((items, i) =>
                 <div className="cover" id={i} key={i}>
                     <div className="container_card">
-                        <div className="cover_face">
+                        <div className="cover_face" style={{fontSize: items.size}}>
                             <div>{items.face}</div>
                         </div>
                         <div style={{ paddingTop: 5 }}>
@@ -112,7 +112,7 @@ export default class Body extends React.Component {
                             </div>
                         </div>
                         <div>
-                            <span className="date1">Added on: {relativeTime(items.date)}</span>
+                            <span className="date1">Added Date: {relativeTime(items.date)}</span>
                         </div>
                     </div>
                     <br />
@@ -136,7 +136,7 @@ export default class Body extends React.Component {
                                     this.state.moreData && this.state.newProducts.length > 0 ? <div><Loader /></div> : null
                                 }
                                 {
-                                    this.state.endScroll && this.state.newProducts.length > 0 ? <p><h3 style={{ textAlign: "center", color: "#B22222" }}>--- end of catalogue ---</h3></p> : null
+                                    this.state.endScroll && this.state.newProducts.length > 0 ? <p><h3 className="the_end">--- end of catalogue ---</h3></p> : null
                                 }
             </Container >
         );
