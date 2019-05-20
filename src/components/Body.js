@@ -1,14 +1,6 @@
 import React from 'react';
 import {
     Container,
-    Row,
-    FormControl,
-    Button,
-    ListGroup,
-    Carousel,
-    Col,
-    InputGroup,
-    Card
 } from 'react-bootstrap';
 import axios from 'axios';
 import { relativeTime } from '../helpers';
@@ -27,21 +19,24 @@ export default class Body extends React.Component {
             moreData: false,
             endScroll: false,
         }
-        this.handleScroll = this.handleScroll.bind(this);
+        this.handleScrolling = this.handleScrolling.bind(this);
         this.pages = 0;
         this.limit = 20;
         this.pageEnd = this.limit;
     }
+
+//THIS MEANS WHEN THE APP LOADS, WE FETCH ALL THE DATA FROM THE JSON SERVER. IT IS REACT COMPONENT LIFECYCLE
+//ALSO ADD JAVASCRIPT EVENT LISTENER TO THE SCROLL FUNCTION 
     componentDidMount() {
-        // var date = new Date();
-        // console.log(date)
-        this.fetchProduct(`${API_URL}/products`);
-        window.addEventListener("scroll", this.handleScroll);
+        this.loadProduct(`${API_URL}/products`);
+        window.addEventListener("scroll", this.handleScrolling);
     }
     componentWillUnmount() {
-        window.removeEventListener("scroll", this.handleScroll);
+        window.removeEventListener("scroll", this.handleScrolling);
     }
-    fetchProduct(url) {
+
+    //FUNCTION THAT HANDLE FETCHING OF DATA USING AXIOS
+    loadProduct(url) {
         axios.get(url).then(response => {
             this.setState({
                 scrolling: false,
@@ -50,6 +45,8 @@ export default class Body extends React.Component {
             this.filterProducts();
         })
     }
+
+    //THIS FUNCTION HANDLES SORTING OF PRICES, SIZE AND ID
     handleSort(event) {
         this.setState({ scrolling: true, moreData: false, endScroll: false })
         let { name, value } = event.target;
@@ -61,6 +58,9 @@ export default class Body extends React.Component {
             this.filterProducts();
         })
     }
+
+    //THIS FUNCTION WAS USED TO FILTER THE DATA COMING FROM OUR LOCAL DATABASE SERVER.JS
+    //INSIDE THE FUNCTION WE CHECKED IF THE LENGTH OF DATA INSIDE THE PRODUCT ARRAY IS LESS THAN THE ADDED LIMITS
     filterProducts() {
         if (this.state.products.length < this.pageEnd) {
             this.setState({
@@ -74,7 +74,9 @@ export default class Body extends React.Component {
             pageEnd: this.pageEnd += this.limit
         })
     }
-    handleScroll() {
+
+    //THE FUNCTION THAT HANDLES THE INFINITE SCROLL
+    handleScrolling() {
         setTimeout(() => {
             this.setState({ moreData: true, endScroll: false })
             let { clientHeight, scrollHeight, offsetHeight, pageYOffset } = this.refs.card;
@@ -84,17 +86,18 @@ export default class Body extends React.Component {
             }
         }, 0);
     }
+
+    //USED THIS FUNCTION TO APPEND THE ADS COMPONENT TO THE LIST OF ITEMS
     showAds(i) {
         if (((i + 1) % this.limit) === 0) {
-            // return React.createElement("div", {},
-            //     React.createElement("input", { type: "text", value: "And here is a child" })
-            // )
             return (
                 <Ads />
             );
         }
     }
-    productView(product) {
+
+
+    renderProduct(product) {
         return (
             product.map((items, i) =>
                 <div className="cover" id={i} key={i}>
@@ -126,10 +129,11 @@ export default class Body extends React.Component {
     render() {
         return (
             <Container ref="card">
+                                    {/* PASSING THE FUNCTION AS A PROPS TO THE SORTPRODUCT COMPONENT AND ALSO BINDING IT. */}
                                 <SortProduct handlesorting = {this.handleSort.bind(this)} />
                                 <div className="prod_wrapper">
                                     {
-                                        this.state.scrolling ? <div><Loader /></div> : this.productView(this.state.newProducts)
+                                        this.state.scrolling ? <div><Loader /></div> : this.renderProduct(this.state.newProducts)
                                     }
                                 </div>
                                 {
